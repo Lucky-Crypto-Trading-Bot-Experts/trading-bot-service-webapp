@@ -1,116 +1,136 @@
 
-import { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, ReactNode } from "react";
 
 type Language = "en" | "es" | "zh";
 
-type LanguageProviderProps = {
-  children: React.ReactNode;
-  defaultLanguage?: Language;
+type TranslationsType = {
+  [key in Language]: {
+    [key: string]: string;
+  };
 };
 
-type LanguageProviderState = {
-  language: Language;
-  setLanguage: (language: Language) => void;
-  t: (key: string) => string;
-};
-
-const translations = {
+export const translations: TranslationsType = {
   en: {
     "nav.home": "Home",
-    "nav.features": "Products",
+    "nav.features": "Features",
     "nav.pricing": "Pricing",
-    "nav.contact": "Contact",
-    "nav.docs": "Documentation",
+    "nav.docs": "Docs",
     "nav.guides": "Guides",
-    "hero.title": "Professional Solana Trading Bots",
-    "hero.subtitle": "Automated solutions for Raydium & Pumpfun trading on Solana blockchain",
+    "nav.contact": "Contact",
+    "nav.analyze": "Analyze Bot",
+    "hero.title": "Automated Solana Trading Solutions",
+    "hero.subtitle": "Maximize your profits with high-performance trading bots for Raydium and PumpFun",
     "cta.start": "Get Started",
-    "cta.demo": "Request Demo",
-    "footer.subscribe": "Subscribe",
-    "footer.newsletter": "Subscribe to our newsletter",
-    "footer.rights": "All rights reserved",
-    "feedback.title": "What Our Traders Say",
-    "social.title": "Join Our Trading Community",
-    "social.subtitle": "Follow us on social media for trading tips and platform updates",
-    "chat.title": "Live Support",
-    "chat.placeholder": "Ask us anything about our bots...",
-    "chat.button": "Send",
-    "chat.greeting": "Hello! How can we help you with our trading bots today?",
+    "cta.demo": "Watch Demo",
     "products.title": "Our Trading Bots",
-    "products.subtitle": "Advanced solutions for Solana traders",
-    "docs.title": "Documentation & Guides",
-    "docs.subtitle": "Learn how to maximize your trading with our bots",
-    "team.title": "Our Team",
-    "contact.title": "Get in Touch",
+    "products.subtitle": "Professional-grade tools designed for optimal performance on Solana's leading DEXs",
+    "docs.title": "Documentation & Resources",
+    "docs.subtitle": "Comprehensive guides to help you get the most out of our trading bots",
+    "feedback.title": "What Our Users Say",
+    "team.title": "Meet Our Team",
+    "contact.title": "Get In Touch",
+    "social.title": "Join Our Community",
+    "social.subtitle": "Connect with us and stay updated on the latest developments",
+    "chat.title": "Chat",
+    "chat.greeting": "Hello! How can we help you today?",
+    "chat.placeholder": "Type your message...",
+    "button.buy": "Buy Now",
+    "button.learnMore": "Learn More",
+    "analyze.title": "Analyze Trading Bots",
+    "analyze.subtitle": "Input a token address to analyze potential trading strategies and risks",
+    "docs.page.title": "Solana Trading Bot Development Guide",
+    "docs.page.subtitle": "A comprehensive guide to building and optimizing trading bots on the Solana blockchain"
   },
   es: {
     "nav.home": "Inicio",
-    "nav.features": "Productos",
+    "nav.features": "Características",
     "nav.pricing": "Precios",
-    "nav.contact": "Contacto",
     "nav.docs": "Documentación",
     "nav.guides": "Guías",
-    "hero.title": "Bots de Trading para Solana",
-    "hero.subtitle": "Soluciones automatizadas para trading en Raydium y Pumpfun en la blockchain de Solana",
+    "nav.contact": "Contacto",
+    "nav.analyze": "Analizar Bot",
+    "hero.title": "Soluciones Automatizadas de Trading en Solana",
+    "hero.subtitle": "Maximiza tus ganancias con bots de trading de alto rendimiento para Raydium y PumpFun",
     "cta.start": "Comenzar",
-    "cta.demo": "Solicitar Demo",
-    "footer.subscribe": "Suscribirse",
-    "footer.newsletter": "Suscríbete a nuestro boletín",
-    "footer.rights": "Todos los derechos reservados",
-    "feedback.title": "Lo Que Dicen Nuestros Traders",
-    "social.title": "Únete a Nuestra Comunidad de Trading",
-    "social.subtitle": "Síguenos en redes sociales para consejos de trading y actualizaciones de la plataforma",
-    "chat.title": "Soporte en Vivo",
-    "chat.placeholder": "Pregúntanos sobre nuestros bots...",
-    "chat.button": "Enviar",
-    "chat.greeting": "¡Hola! ¿Cómo podemos ayudarte con nuestros bots de trading hoy?",
+    "cta.demo": "Ver Demo",
     "products.title": "Nuestros Bots de Trading",
-    "products.subtitle": "Soluciones avanzadas para traders de Solana",
-    "docs.title": "Documentación y Guías",
-    "docs.subtitle": "Aprende a maximizar tu trading con nuestros bots",
-    "team.title": "Nuestro Equipo",
-    "contact.title": "Contáctanos",
+    "products.subtitle": "Herramientas de nivel profesional diseñadas para un rendimiento óptimo en los principales DEX de Solana",
+    "docs.title": "Documentación y Recursos",
+    "docs.subtitle": "Guías completas para ayudarte a aprovechar al máximo nuestros bots de trading",
+    "feedback.title": "Lo que dicen nuestros usuarios",
+    "team.title": "Conoce a nuestro equipo",
+    "contact.title": "Ponte en contacto",
+    "social.title": "Únete a nuestra comunidad",
+    "social.subtitle": "Conéctate con nosotros y mantente actualizado sobre los últimos desarrollos",
+    "chat.title": "Chat",
+    "chat.greeting": "¡Hola! ¿Cómo podemos ayudarte hoy?",
+    "chat.placeholder": "Escribe tu mensaje...",
+    "button.buy": "Comprar Ahora",
+    "button.learnMore": "Más Información",
+    "analyze.title": "Analizar Bots de Trading",
+    "analyze.subtitle": "Ingresa una dirección de token para analizar posibles estrategias y riesgos",
+    "docs.page.title": "Guía de Desarrollo de Bots de Trading en Solana",
+    "docs.page.subtitle": "Una guía completa para construir y optimizar bots de trading en la blockchain de Solana"
   },
   zh: {
     "nav.home": "首页",
-    "nav.features": "产品",
+    "nav.features": "功能",
     "nav.pricing": "价格",
-    "nav.contact": "联系我们",
     "nav.docs": "文档",
     "nav.guides": "指南",
-    "hero.title": "专业Solana交易机器人",
-    "hero.subtitle": "Solana区块链上Raydium和Pumpfun交易的自动化解决方案",
-    "cta.start": "立即开始",
-    "cta.demo": "请求演示",
-    "footer.subscribe": "订阅",
-    "footer.newsletter": "订阅我们的新闻通讯",
-    "footer.rights": "版权所有",
-    "feedback.title": "交易者的评价",
-    "social.title": "加入我们的交易社区",
-    "social.subtitle": "在社交媒体上关注我们，获取交易技巧和平台更新",
-    "chat.title": "在线支持",
-    "chat.placeholder": "询问有关我们机器人的任何问题...",
-    "chat.button": "发送",
-    "chat.greeting": "您好！今天我们如何帮助您使用我们的交易机器人？",
+    "nav.contact": "联系我们",
+    "nav.analyze": "分析机器人",
+    "hero.title": "Solana自动化交易解决方案",
+    "hero.subtitle": "使用高性能交易机器人为Raydium和PumpFun最大化您的利润",
+    "cta.start": "开始使用",
+    "cta.demo": "观看演示",
     "products.title": "我们的交易机器人",
-    "products.subtitle": "为Solana交易者提供的高级解决方案",
-    "docs.title": "文档和指南",
-    "docs.subtitle": "了解如何通过我们的机器人最大化您的交易",
-    "team.title": "我们的团队",
+    "products.subtitle": "为Solana领先的DEX设计的专业级工具",
+    "docs.title": "文档和资源",
+    "docs.subtitle": "全面的指南，帮助您充分利用我们的交易机器人",
+    "feedback.title": "用户评价",
+    "team.title": "认识我们的团队",
     "contact.title": "联系我们",
-  },
+    "social.title": "加入我们的社区",
+    "social.subtitle": "与我们联系并了解最新动态",
+    "chat.title": "聊天",
+    "chat.greeting": "您好！今天我们能为您做些什么？",
+    "chat.placeholder": "输入您的消息...",
+    "button.buy": "立即购买",
+    "button.learnMore": "了解更多",
+    "analyze.title": "分析交易机器人",
+    "analyze.subtitle": "输入代币地址以分析潜在的交易策略和风险",
+    "docs.page.title": "Solana交易机器人开发指南",
+    "docs.page.subtitle": "构建和优化Solana区块链上交易机器人的综合指南"
+  }
 };
 
-const LanguageContext = createContext<LanguageProviderState | undefined>(undefined);
+interface LanguageContextType {
+  language: Language;
+  setLanguage: (language: Language) => void;
+  t: (key: string) => string;
+}
 
-export function LanguageProvider({
-  children,
-  defaultLanguage = "en",
-}: LanguageProviderProps) {
+const LanguageContext = createContext<LanguageContextType>({
+  language: "en",
+  setLanguage: () => {},
+  t: (key: string) => key
+});
+
+interface LanguageProviderProps {
+  children: ReactNode;
+  defaultLanguage?: Language;
+}
+
+export const LanguageProvider = ({ 
+  children, 
+  defaultLanguage = "en" 
+}: LanguageProviderProps) => {
   const [language, setLanguage] = useState<Language>(defaultLanguage);
 
+  // Translation function
   const t = (key: string): string => {
-    return translations[language][key as keyof typeof translations.en] || key;
+    return translations[language][key] || key;
   };
 
   return (
@@ -118,12 +138,8 @@ export function LanguageProvider({
       {children}
     </LanguageContext.Provider>
   );
-}
+};
 
 export const useLanguage = () => {
-  const context = useContext(LanguageContext);
-  if (!context) {
-    throw new Error("useLanguage must be used within a LanguageProvider");
-  }
-  return context;
-}
+  return useContext(LanguageContext);
+};

@@ -1,8 +1,9 @@
 
-import { Moon, Sun, FileText, BookOpen } from "lucide-react";
+import { Moon, Sun, FileText, BookOpen, Bot } from "lucide-react";
 import { useTheme } from "./theme-provider";
 import { useLanguage } from "./language-provider";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,9 +20,9 @@ export function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <a href="/" className="text-xl font-semibold">
+            <Link to="/" className="text-xl font-semibold">
               SolanaTraderBot
-            </a>
+            </Link>
           </div>
 
           <div className="hidden md:flex items-center space-x-8">
@@ -34,14 +35,14 @@ export function Navbar() {
             <a href="#pricing" className="hover:text-primary transition-colors">
               {t("nav.pricing")}
             </a>
-            <a href="#docs" className="hover:text-primary transition-colors flex items-center">
+            <Link to="/documents" className="hover:text-primary transition-colors flex items-center">
               <FileText className="h-4 w-4 mr-1" />
               {t("nav.docs")}
-            </a>
-            <a href="#guides" className="hover:text-primary transition-colors flex items-center">
-              <BookOpen className="h-4 w-4 mr-1" />
-              {t("nav.guides")}
-            </a>
+            </Link>
+            <Link to="/analyze" className="hover:text-primary transition-colors flex items-center">
+              <Bot className="h-4 w-4 mr-1" />
+              Analyze Bot
+            </Link>
             <a href="#contact" className="hover:text-primary transition-colors">
               {t("nav.contact")}
             </a>
