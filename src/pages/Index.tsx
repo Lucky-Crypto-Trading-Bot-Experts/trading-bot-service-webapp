@@ -1,20 +1,22 @@
-
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/components/language-provider";
-import { ArrowRight, CheckCircle2, Download, FileText, BookOpen, Users, MessageCircle } from "lucide-react";
+import { ArrowRight, CheckCircle2, Download, FileText, BookOpen, Users, MessageCircle, ShoppingCart } from "lucide-react";
 import { FeedbackSection } from "@/components/feedback/FeedbackSection";
 import { SocialSection } from "@/components/social/SocialSection";
+import { Contributors, Contributor } from "@/components/team/Contributors";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
+  CardFooter,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const { t } = useLanguage();
@@ -25,30 +27,35 @@ const Index = () => {
       description: "Instantly snipe new token listings on Raydium with customizable parameters",
       icon: "🚀",
       features: ["Auto-detection of new listings", "Custom slippage settings", "Gas optimization", "Multi-wallet support"],
+      price: "$199",
     },
     {
       title: "Solana PumpFun Sniper Bot",
       description: "Lightning-fast execution for PumpFun token launches",
       icon: "⚡",
       features: ["Millisecond transaction execution", "Anti-rug protection", "Profit take automation", "Loss prevention"],
+      price: "$199",
     },
     {
       title: "Solana Raydium Copy Trading",
       description: "Automatically copy successful traders on Raydium",
       icon: "👥",
       features: ["Follow top traders", "Custom allocation settings", "Real-time trade mirroring", "Performance analytics"],
+      price: "$249",
     },
     {
       title: "Solana PumpFun Copy Trading",
       description: "Mirror the best PumpFun traders with automated execution",
       icon: "🔄",
       features: ["Whale wallet tracking", "Customizable delay settings", "Position sizing options", "Stop-loss automation"],
+      price: "$249",
     },
     {
       title: "Raydium + PumpFun Combo Bot",
       description: "Complete trading solution for both Raydium and PumpFun platforms",
       icon: "🔥",
       features: ["Cross-platform arbitrage", "Unified dashboard", "Advanced automation rules", "Priority transaction routing"],
+      price: "$399",
     },
   ];
 
@@ -85,30 +92,34 @@ const Index = () => {
     },
   ];
 
-  const teamMembers = [
+  const contributors: Contributor[] = [
     {
-      name: "Alex Chen",
+      name: "Benjamin Tan",
       role: "Lead Developer",
       bio: "Blockchain expert with 7+ years in DeFi development",
-      image: "https://randomuser.me/api/portraits/men/1.jpg",
+      image: "/lovable-uploads/df652ef2-2575-4bdb-b715-f142a6b72bd8.png",
+      github: "https://github.com/benjaminTan10",
     },
     {
-      name: "Sophia Rodriguez",
+      name: "LuckyRay",
       role: "Trading Strategist",
       bio: "Former quant trader specializing in crypto markets",
-      image: "https://randomuser.me/api/portraits/women/1.jpg",
+      image: "/lovable-uploads/de4e8169-8565-4b35-84aa-31f5ef052ec2.png",
+      github: "https://github.com/0xluckyray",
     },
     {
-      name: "Marcus Johnson",
-      role: "Customer Success",
-      bio: "Dedicated to helping traders maximize their potential",
-      image: "https://randomuser.me/api/portraits/men/2.jpg",
-    },
-    {
-      name: "Olivia Zhang",
+      name: "Amazia Tower",
       role: "Security Specialist",
       bio: "Ensures all our bots meet the highest security standards",
-      image: "https://randomuser.me/api/portraits/women/2.jpg",
+      image: "/lovable-uploads/39b2b4ba-52aa-4817-be27-28b4f7c47b34.png",
+      github: "https://github.com/amaziatower",
+    },
+    {
+      name: "Adam Sandler",
+      role: "Customer Success",
+      bio: "Dedicated to helping traders maximize their potential",
+      image: "/lovable-uploads/b5de9bae-e1ed-4ed6-a36f-ad99608a7a31.png",
+      github: "https://github.com/adamsandler14",
     },
   ];
 
@@ -140,6 +151,154 @@ const Index = () => {
     "Risk Management in Crypto Trading",
     "Technical Analysis for Bot Trading",
     "Maximizing Profits with Sniping Bots",
+  ];
+
+  // New expanded Solana bot types with detailed information
+  const detailedBots = [
+    {
+      name: "Liquidation Monitoring Bot",
+      description: "Monitor positions at risk of liquidation across Solana lending platforms",
+      features: [
+        "Real-time debt position tracking",
+        "Multi-protocol coverage (Solend, Mango, Jet)",
+        "Adjustable alert thresholds",
+        "Health factor visualization"
+      ],
+      technical: "Uses Solana RPC subscriptions to track account changes and monitor liquidation thresholds in real-time.",
+      price: "$299"
+    },
+    {
+      name: "MEV Arbitrage Bot",
+      description: "Capture value from price discrepancies across Solana DEXs",
+      features: [
+        "Cross-DEX price monitoring",
+        "Flash loan integration",
+        "Priority fee optimization",
+        "Profit threshold settings"
+      ],
+      technical: "Leverages Solana's parallel transaction processing to execute atomic arbitrage trades with minimal latency.",
+      price: "$499"
+    },
+    {
+      name: "Limit Order Bot",
+      description: "Place limit orders on Solana DEXs that don't natively support them",
+      features: [
+        "Multiple DEX support",
+        "GoodTillCancelled orders",
+        "Partial fill handling",
+        "Stop-loss integration"
+      ],
+      technical: "Monitors on-chain price feeds and executes market orders when target prices are reached, simulating limit order functionality.",
+      price: "$199"
+    },
+    {
+      name: "NFT Sniping Bot",
+      description: "Automatically purchase NFTs that meet your criteria the moment they're listed",
+      features: [
+        "Magic Eden & Tensor coverage",
+        "Rarity-based purchasing",
+        "Floor price monitoring",
+        "Collection-specific strategies"
+      ],
+      technical: "Subscribes to NFT marketplace program activities and executes purchases based on configurable parameters.",
+      price: "$349"
+    },
+    {
+      name: "Yield Farming Optimizier",
+      description: "Automatically rebalance positions to maximize yield across Solana protocols",
+      features: [
+        "APY comparison algorithms",
+        "Automated position migration",
+        "Compound frequency optimization",
+        "Risk-adjusted return analysis"
+      ],
+      technical: "Compares real yields across lending protocols, liquidity pools, and staking options, rebalancing to maximize returns.",
+      price: "$399"
+    },
+    {
+      name: "Custom Trading Bot Development",
+      description: "Bespoke trading bot development based on your specific strategy requirements",
+      features: [
+        "Strategy consultation",
+        "Customized implementation",
+        "Back-testing capabilities",
+        "Ongoing support & maintenance"
+      ],
+      technical: "Developed by our expert team using Rust or TypeScript SDK based on performance requirements and strategy complexity.",
+      price: "Custom"
+    },
+    {
+      name: "Grid Trading Bot",
+      description: "Automate buys and sells at fixed price intervals to capitalize on market range movements",
+      features: [
+        "Dynamic grid sizing",
+        "Auto-rebalancing",
+        "Multi-market support",
+        "Custom price range configuration"
+      ],
+      technical: "Uses math models to create a grid of buy and sell orders across a price range, automatically adjusting position sizes based on volatility.",
+      price: "$279"
+    },
+    {
+      name: "Sentiment Analysis Bot",
+      description: "Trade based on real-time social media sentiment around Solana tokens",
+      features: [
+        "Twitter/X data integration",
+        "Discord server monitoring",
+        "Telegram group analysis",
+        "News sentiment scoring"
+      ],
+      technical: "Employs NLP algorithms to analyze social media posts and news articles, scoring sentiment to trigger trading decisions.",
+      price: "$349"
+    },
+    {
+      name: "Flash Loan Arbitrage Bot",
+      description: "Execute complex arbitrage strategies using uncollateralized flash loans",
+      features: [
+        "Multi-step transaction paths",
+        "Risk assessment algorithms",
+        "Gas optimization",
+        "Profit threshold controls"
+      ],
+      technical: "Utilizes Solana's composability to borrow assets, execute trades across multiple venues, and repay loans within a single transaction.",
+      price: "$599"
+    },
+    {
+      name: "Solana Wallet Tracker",
+      description: "Monitor and copy trades from specific wallets or smart contracts",
+      features: [
+        "Whale wallet alerts",
+        "Transaction analysis",
+        "Automatic trade mirroring",
+        "Custom notification settings"
+      ],
+      technical: "Subscribes to account update events on the Solana blockchain to detect transactions from specified wallets and analyze trading patterns.",
+      price: "$249"
+    },
+    {
+      name: "Impermanent Loss Shield",
+      description: "Protect liquidity positions from impermanent loss with automated hedging",
+      features: [
+        "Dynamic delta hedging",
+        "Auto position adjustment",
+        "IL risk calculator",
+        "Portfolio rebalancing"
+      ],
+      technical: "Monitors price divergence in liquidity pools and executes offsetting positions to minimize impermanent loss exposure.",
+      price: "$429"
+    },
+    {
+      name: "Metadata Sniper Bot",
+      description: "Target tokens with specific on-chain metadata characteristics",
+      features: [
+        "Custom metadata filters",
+        "Supply analysis",
+        "Holder distribution scoring",
+        "Token permission scanning"
+      ],
+      technical: "Scans and indexes token metadata on Solana to identify tokens meeting specified criteria for quality and security.",
+      price: "$329"
+    }
   ];
 
   return (
@@ -198,10 +357,27 @@ const Index = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button className="w-full mt-6">Learn More</Button>
                 </CardContent>
+                <CardFooter className="pt-4 flex flex-col space-y-3">
+                  <div className="text-2xl font-bold text-center w-full">{product.price}</div>
+                  <div className="flex gap-2 w-full">
+                    <Button className="flex-1" variant="outline">{t("button.learnMore")}</Button>
+                    <Button className="flex-1 gap-2">
+                      <ShoppingCart className="h-4 w-4" />
+                      {t("button.buy")}
+                    </Button>
+                  </div>
+                </CardFooter>
               </Card>
             ))}
+          </div>
+          <div className="mt-12 text-center">
+            <Link to="/analyze">
+              <Button size="lg" variant="outline" className="group">
+                Analyze Token for Bot Trading
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -231,6 +407,52 @@ const Index = () => {
                   </ul>
                   <Button className={`w-full mt-6 ${index === 1 ? 'bg-primary' : ''}`}>Get Started</Button>
                 </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Advanced Solana Bots Section */}
+      <section id="advanced-bots" className="py-20 bg-secondary/5">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-4">
+            Advanced Solana Trading Bots
+          </h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Our specialized Solana trading bots leverage the blockchain's unique capabilities for maximum performance and profitability
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {detailedBots.map((bot, index) => (
+              <Card key={index} className="card-hover h-full flex flex-col">
+                <CardHeader>
+                  <CardTitle>{bot.name}</CardTitle>
+                  <CardDescription className="mt-2">{bot.description}</CardDescription>
+                </CardHeader>
+                <CardContent className="flex-grow">
+                  <h4 className="font-medium mb-2 text-primary">Key Features:</h4>
+                  <ul className="space-y-3 mb-4">
+                    {bot.features.map((feature, fIndex) => (
+                      <li key={fIndex} className="flex items-start">
+                        <CheckCircle2 className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <h4 className="font-medium mb-2 text-primary">Technical Details:</h4>
+                  <p className="text-sm text-muted-foreground mb-4">{bot.technical}</p>
+                </CardContent>
+                <CardFooter className="pt-4 flex flex-col space-y-3">
+                  <div className="text-2xl font-bold text-center w-full">{bot.price}</div>
+                  <div className="flex gap-2 w-full">
+                    <Button className="flex-1" variant="outline">Details</Button>
+                    <Button className="flex-1 gap-2">
+                      <ShoppingCart className="h-4 w-4" />
+                      Buy Now
+                    </Button>
+                  </div>
+                </CardFooter>
               </Card>
             ))}
           </div>
@@ -315,32 +537,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section id="team" className="py-20">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            {t("team.title")}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
-              <Card key={index} className="card-hover">
-                <CardHeader className="text-center">
-                  <div className="mx-auto rounded-full overflow-hidden w-24 h-24 mb-4">
-                    <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
-                  </div>
-                  <CardTitle>{member.name}</CardTitle>
-                  <CardDescription className="font-medium text-primary">
-                    {member.role}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <p className="text-muted-foreground">{member.bio}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Team Section - replaced with Contributors component */}
+      <Contributors contributors={contributors} />
 
       {/* Feedback Section */}
       <FeedbackSection />
