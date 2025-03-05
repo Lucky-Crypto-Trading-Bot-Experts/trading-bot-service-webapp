@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
 type Language = "en" | "es" | "zh";
@@ -30,7 +29,9 @@ export const translations: TranslationsType = {
     "team.title": "Meet Our Team",
     "contact.title": "Get In Touch",
     "social.title": "Join Our Community",
-    "social.subtitle": "Connect with us and stay updated on the latest developments",
+    "social.subtitle": "Connect with us and stay updated on the latest developments through our social media channels and community platforms",
+    "social.telegram": "Join our Telegram community",
+    "social.discord": "Join our Discord server",
     "chat.title": "Chat",
     "chat.greeting": "Hello! How can we help you today?",
     "chat.placeholder": "Type your message...",
@@ -61,7 +62,9 @@ export const translations: TranslationsType = {
     "team.title": "Conoce a nuestro equipo",
     "contact.title": "Ponte en contacto",
     "social.title": "Únete a nuestra comunidad",
-    "social.subtitle": "Conéctate con nosotros y mantente actualizado sobre los últimos desarrollos",
+    "social.subtitle": "Conéctate con nosotros y mantente actualizado sobre los últimos desarrollos a través de nuestras redes sociales y plataformas comunitarias",
+    "social.telegram": "Únete a nuestra comunidad de Telegram",
+    "social.discord": "Únete a nuestro servidor de Discord",
     "chat.title": "Chat",
     "chat.greeting": "¡Hola! ¿Cómo podemos ayudarte hoy?",
     "chat.placeholder": "Escribe tu mensaje...",
@@ -92,7 +95,9 @@ export const translations: TranslationsType = {
     "team.title": "认识我们的团队",
     "contact.title": "联系我们",
     "social.title": "加入我们的社区",
-    "social.subtitle": "与我们联系并了解最新动态",
+    "social.subtitle": "通过我们的社交媒体渠道和社区平台与我们联系并了解最新动态",
+    "social.telegram": "加入我们的Telegram社区",
+    "social.discord": "加入我们的Discord服务器",
     "chat.title": "聊天",
     "chat.greeting": "您好！今天我们能为您做些什么？",
     "chat.placeholder": "输入您的消息...",

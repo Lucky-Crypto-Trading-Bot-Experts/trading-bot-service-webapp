@@ -1,6 +1,7 @@
+
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/components/language-provider";
-import { Github, Twitter, Linkedin, Instagram } from "lucide-react";
+import { Github, Twitter, Linkedin, Instagram, MessageCircle, MessagesSquare } from "lucide-react";
 
 export function SocialSection() {
   const { t } = useLanguage();
@@ -12,7 +13,7 @@ export function SocialSection() {
         <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
           {t("social.subtitle")}
         </p>
-        <div className="flex justify-center gap-4">
+        <div className="flex justify-center gap-4 flex-wrap">
           <Button variant="outline" size="icon">
             <Github className="h-5 w-5" />
           </Button>
@@ -24,6 +25,12 @@ export function SocialSection() {
           </Button>
           <Button variant="outline" size="icon">
             <Instagram className="h-5 w-5" />
+          </Button>
+          <Button variant="outline" size="icon">
+            <MessageCircle className="h-5 w-5" />
+          </Button>
+          <Button variant="outline" size="icon">
+            <MessagesSquare className="h-5 w-5" />
           </Button>
         </div>
       </div>

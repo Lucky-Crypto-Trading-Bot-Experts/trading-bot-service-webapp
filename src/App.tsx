@@ -12,6 +12,7 @@ import { ChatBox } from "./components/chat/ChatBox";
 import Index from "./pages/Index";
 import DocumentPage from "./pages/DocumentPage";
 import AnalyzeBotPage from "./pages/AnalyzeBotPage";
+import BotLearnPage from "./pages/BotLearnPage";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
                   <Route path="/" element={<Index />} />
                   <Route path="/documents" element={<DocumentPage />} />
                   <Route path="/analyze" element={<AnalyzeBotPage />} />
+                  <Route path="/bot/:botName/learn" element={<BotLearnPage />} />
                 </Routes>
               </main>
               <Footer />
